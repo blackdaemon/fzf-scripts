@@ -10,13 +10,13 @@
 # saner programming env: these switches turn some bugs into errors
 set -o errexit -o pipefail -o noclobber -o nounset
 
-if [ "$(basename $PWD)" == "test" ]; then
+if [ "$(basename $PWD)" == "tests" ]; then
   cd ..
 fi 
 
 project_dir=$PWD
 
-cd test
+cd tests
 
 # Build the Docker image
 docker build -t zsh-script-test -f Dockerfile.zsh .
