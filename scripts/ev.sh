@@ -12,15 +12,6 @@
 #   esc: Exit
 #
 function __ev__() {
-    # Function to get the position of a substring (needle) in a string (haystack).
-    # Returns position (0-based) if found, otherwise -1.
-    strpos() {
-        local haystack; haystack="$1"
-        local needle; needle="$2"
-        local prefix; prefix="${haystack%%"$needle"*}"
-        [[ "$prefix" = "$haystack" ]] && { echo -1; return 1; } || echo "${#prefix}"
-    }
-
     [ -z "$ZSH_VERSION" ] && [ -z "$BASH_VERSION" ] && echo "Not supported shell: $SHELL" && return
 
     local in_zsh=0
@@ -72,10 +63,14 @@ function __ev__() {
     # Return early if the output is not an export statement
     [[ "$output" != export\ * ]] && return
     
-    # Find the position of '=' and move cursor after it
-    local equal_sign_pos=$(strpos "$output" "=")
+    # Find the position of '='
+    local equal_sign_pos=-1
+    local prefix; prefix="${output%%"="*}"
+    [[ "$prefix" != "$output" ]] && equal_sign_pos=${#prefix}
+    # Return early if there is no '='
     [[ $equal_sign_pos -eq -1 ]] && return
 
+    # Move cursor after '='
     if [ $in_zsh -eq 1 ]; then
         # zsh
         # Move cursor after the '=' symbol
