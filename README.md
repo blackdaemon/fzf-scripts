@@ -16,18 +16,11 @@
 ##  Table of Contents
 
 - [ Overview](#-overview)
-- [ Features](#-features)
-- [ Project Structure](#-project-structure)
-  - [ Project Index](#-project-index)
-- [ Getting Started](#-getting-started)
+- [ Scripts](#-scripts)
+  - [ ev.sh](#-ev-sh)
+- [ Testing](#-testing)
   - [ Prerequisites](#-prerequisites)
-  - [ Installation](#-installation)
-  - [ Usage](#-usage)
-  - [ Testing](#-testing)
-- [ Project Roadmap](#-project-roadmap)
-- [ Contributing](#-contributing)
-- [ License](#-license)
-- [ Acknowledgments](#-acknowledgments)
+  - [ Running tests](#-running-tests)
 
 ---
 
@@ -54,7 +47,7 @@ Activate in commandline using hotkey `ctrl+alt e`.
 The hotkey can be changed at the end of the `ev.sh` script.
 
 
-###  Testing
+##  Testing
 
 The scripts are written in and for bash shell. To test them in zsh I use docker image.
 
@@ -62,9 +55,9 @@ The scripts are written in and for bash shell. To test them in zsh I use docker 
 
 **Using `docker`** &nbsp; [<img align="center" src="https://img.shields.io/badge/Docker-2CA5E0.svg?style={badge_style}&logo=docker&logoColor=white" />](https://www.docker.com/)
 
-### Running test in zsh shell
+### Running tests
 
-Run the test zsh docker image:
+To test scripts in zsh shell, run the test zsh docker image:
 
 ```sh
 tests/test_in_zsh.sh
