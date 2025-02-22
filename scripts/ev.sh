@@ -36,8 +36,9 @@ function __ev__() {
     fi
 
     # Launch fzf to select an environment variable
-    local output; output="$(env | fzf \
+    local output; output="$(env --null | fzf \
         --query "$input" \
+        --read0 \
         --exact --height=10 --layout=reverse \
         --header "$header" \
         --header-first \
