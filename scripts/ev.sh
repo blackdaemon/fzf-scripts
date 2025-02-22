@@ -10,25 +10,36 @@
 #   ctrl-v: Put environment variable value in the commandline
 #   ctrl-u: Put environment variable unset statement in the commandline
 #   esc: Exit
-#
-function __ev__() {
-    [ -z "$ZSH_VERSION" ] && [ -z "$BASH_VERSION" ] && echo "Not supported shell: $SHELL" && return
 
-    local in_zsh=0
-    [ -n "$ZSH_VERSION" ] && in_zsh=1
+
+# Check supported shells
+[ -z "$ZSH_VERSION" ] && [ -z "$BASH_VERSION" ] && echo "Your current shell is not supported by ev.sh" && return 1
+
+function __ev__() {
+    local USE_NERDFONTS=true
+
+    local in_zsh=false
+    [ -n "$ZSH_VERSION" ] && in_zsh=true
     
     local input
-    if [ $in_zsh -eq 1 ]; then
+    if [[ $in_zsh = true ]]; then
         input="$BUFFER"
     else
         input="$READLINE_LINE"
+    fi
+
+    local header
+    if [[ $USE_NERDFONTS = true ]]; then
+        header="Select environment variable   󱗼  tab put  enter export  ctrl-n name  ctrl-v value  ctrl-u unset" 
+    else
+        header="Select environment variable   (tab: put | enter: export | ctrl-n: name | ctrl-v: value | ctrl-u: unset)" 
     fi
 
     # Launch fzf to select an environment variable
     local output; output="$(env | fzf \
         --query "$input" \
         --exact --height=10 --layout=reverse \
-        --header="Select ehvironment variable   󱗼  tab put  enter export  ctrl-n name  ctrl-v value  ctrl-u unset" \
+        --header "$header" \
         --header-first \
         --bind 'tab:become(echo {})' \
         --bind 'enter:become(echo -n "export "; echo {})' \
@@ -39,7 +50,7 @@ function __ev__() {
 
     # Exit if no selection was made
     if [[ -z "$output" ]]; then
-        if [ $in_zsh -eq 1 ]; then
+        if [[ $in_zsh = true ]]; then
             zle redisplay
         fi
         return
@@ -49,7 +60,7 @@ function __ev__() {
     output="${output#*$\"\t\"}"
 
     # If `READLINE_POINT` is unset, set it to the end of the line
-    if [ $in_zsh -eq 1 ]; then
+    if [[ $in_zsh = true ]]; then
         # zsh
         BUFFER="$output"
         CURSOR=${#BUFFER}
@@ -71,7 +82,7 @@ function __ev__() {
     [[ $equal_sign_pos -eq -1 ]] && return
 
     # Move cursor after '='
-    if [ $in_zsh -eq 1 ]; then
+    if [[ $in_zsh = true ]]; then
         # zsh
         # Move cursor after the '=' symbol
         CURSOR=$(( equal_sign_pos + 1 ))
