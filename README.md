@@ -42,9 +42,14 @@ Browse environment variables and then push to commandline:
   - `ctrl-v`: Variable value
   - `ctrl-u`: Variable unset statement
 
-To use, source the `ev.sh` in your .bashrc (or `.zhsrc`) file.
+To use it, source the `ev.sh` in your .bashrc (or `.zhsrc`) file:
+
+```sh
+source path/to/ev.sh
+```
 
 Activate in commandline using hotkey `ctrl+alt e`.
+
 The hotkey can be changed at the end of the `ev.sh` script.
 
 
