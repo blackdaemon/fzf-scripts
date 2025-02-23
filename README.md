@@ -35,11 +35,12 @@ Collection of different fzf scripts I created.
 ### ev.sh
 
 Browse environment variables and then push to commandline:
-    - `enter`:  Variable export statement ready to edit (cursor placed after `=`)
-    - `tab`:    Variable set statement
-    - `ctrl-n`: Variable name
-    - `ctrl-v`: Variable value
-    - `ctrl-u`: Variable unset statement
+
+  - `enter`:  Variable export statement ready to edit (cursor placed after `=`)
+  - `tab`:    Variable set statement
+  - `ctrl-n`: Variable name
+  - `ctrl-v`: Variable value
+  - `ctrl-u`: Variable unset statement
 
 To use, source the `ev.sh` in your .bashrc (or `.zhsrc`) file.
 
@@ -62,4 +63,3 @@ To test scripts in zsh shell, run the test zsh docker image:
 ```sh
 tests/test_in_zsh.sh
 ```
-
