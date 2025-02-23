@@ -15,12 +15,12 @@
 
 ##  Table of Contents
 
-- [ Overview](#-overview)
-- [ Scripts](#-scripts)
-  - [ ev.sh](#-ev-sh)
-- [ Testing](#-testing)
-  - [ Prerequisites](#-prerequisites)
-  - [ Running tests](#-running-tests)
+- [Overview](#overview)
+- [Scripts](#scripts)
+  - [ev.sh](#ev-sh)
+- [Testing](#testing)
+  - [Prerequisites](#prerequisites)
+  - [Running tests](#running-tests)
 
 ---
 
@@ -55,8 +55,8 @@ The hotkey can be changed at the end of the `ev.sh` script.
 
 ##  Testing
 
-The scripts are written in and for `bash` but are compatible with `zsh`. 
-To test them from `bash` in `zsh` I use docker image.
+The scripts are developed in  `bash` but are compatible with `zsh`. 
+To test them from `bash` in `zsh` I use docker image (see [Testing](#testing)).
 
 ### Prerequisites
 
