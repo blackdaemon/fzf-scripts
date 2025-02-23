@@ -56,7 +56,7 @@ The hotkey can be changed at the end of the `ev.sh` script.
 ##  Testing
 
 The scripts are developed in  `bash` but are compatible with `zsh`. 
-To test them from `bash` in `zsh` I use docker image (see [Testing](#testing)).
+To test them from `bash` in `zsh` I use docker image.
 
 ### Prerequisites
 
