@@ -64,7 +64,7 @@ To test them from `bash` in `zsh` I use docker image.
 
 ### Running tests
 
-To test scripts in zsh shell, run the test zsh docker image:
+To test scripts in `zsh`, run the testing zsh docker image:
 
 ```sh
 tests/test_in_zsh.sh
